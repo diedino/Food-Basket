@@ -45,7 +45,6 @@ namespace ConsoleApp6
                     {
                         for (int j = 0; j < arr.Length; j++)
                         {
-                            cost += foodBasket[i][j].Price;
                             if (foodBasket[i][j].Price > maxPrice)
                             {
                                 maxPrice = foodBasket[i][j].Price;
@@ -54,22 +53,17 @@ namespace ConsoleApp6
                         }
                         Console.Write("В {0} корзине максимальная цена: {1}", i + 1, foodBasket[i][maxJ].ToString());
                         Console.WriteLine();
-                        if (cost > maxCost)
+                    }
+                    for (int i=0;i<foodBasket.Length;i++)
+                    {
+                        if (foodBasket[i].BasketCost()>maxCost)
                         {
+                            maxCost = foodBasket[i].BasketCost();
                             maxI = i;
-                            maxCost = cost;
-                            cost = 0;
                         }
                     }
-                    Console.Write("Самая дорогая корзина: {0}", maxI);
+                    Console.Write("Самая дорогая корзина: {0}", maxI+1);
                     Console.WriteLine();
-                    //for (int i = 0; i < foodBasket.Length; i++)
-                    //{
-                    //    for (int j = 0; j < arr.Length; j++)
-                    //    {
-                    //        Console.WriteLine(foodBasket[i][j].ToString());
-                    //    }
-                    //}
                 }
                 catch (ArgumentException e)
                 {
