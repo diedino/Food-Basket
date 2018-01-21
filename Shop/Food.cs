@@ -13,7 +13,7 @@ namespace Shop
         }
         public override string ToString()
         {
-            return String.Format("Name: {0}; Price: {1}; Weight: {2}", Name, Price, Weight);
+            return String.Format("Name: {0}; Price: {1:f2}; Weight: {2}", Name, Price, Weight);
         }
     }
 }

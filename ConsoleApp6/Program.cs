@@ -17,7 +17,7 @@ namespace ConsoleApp6
             {
                 try
                 {
-                    int maxJ = 0,maxI=0;
+                    int maxJ = 0, maxI = 0;
                     double maxPrice = 0, maxCost = 0, cost = 0;
                     Item[] arr = new Item[8];
                     Random rand = new Random(DateTime.Now.Millisecond);
@@ -31,15 +31,23 @@ namespace ConsoleApp6
                                 case 1:
                                 case 2:
                                 case 3:
-                                    arr[j] = new Food(food[rand.Next(0, 4)], rand.Next(30, 3000), rand.Next(10, 101));
+                                    arr[j] = new Food(food[rand.Next(0, 4)], rand.Next(30, 2990)+rand.NextDouble() * 10, rand.Next(10, 101));
                                     break;
                                 case 4:
                                 case 5:
-                                    arr[j] = new Drink(drink[rand.Next(0, 4)], rand.Next(30, 3000), rand.Next(10, 101));
+                                    arr[j] = new Drink(drink[rand.Next(0, 4)], rand.Next(30, 2990) + rand.NextDouble() * 10, rand.Next(10, 101));
                                     break;
                             }
                         }
                         foodBasket[i] = new FoodBasket(8, arr);
+                    }
+                    for (int i = 0; i < foodBasket.Length; i++)
+                    {
+                        for (int j = 0; j < arr.Length; j++)
+                        {
+                            Console.WriteLine(foodBasket[i][j].ToString());
+                        }
+                        Console.WriteLine("*********************");
                     }
                     for (int i = 0; i < foodBasket.Length; i++)
                     {
@@ -51,18 +59,18 @@ namespace ConsoleApp6
                                 maxJ = j;
                             }
                         }
-                        Console.Write("В {0} корзине максимальная цена: {1}", i + 1, foodBasket[i][maxJ].ToString());
+                        Console.Write("В {0} корзине максимальная цена: {1:f2}", i + 1, foodBasket[i][maxJ].ToString());
                         Console.WriteLine();
                     }
-                    for (int i=0;i<foodBasket.Length;i++)
+                    for (int i = 0; i < foodBasket.Length; i++)
                     {
-                        if (foodBasket[i].BasketCost()>maxCost)
+                        if (foodBasket[i].BasketCost() > maxCost)
                         {
                             maxCost = foodBasket[i].BasketCost();
                             maxI = i;
                         }
                     }
-                    Console.Write("Самая дорогая корзина: {0}", maxI+1);
+                    Console.Write("Самая дорогая корзина: {0:f2}", maxI + 1);
                     Console.WriteLine();
                 }
                 catch (ArgumentException e)
